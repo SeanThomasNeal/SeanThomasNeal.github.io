@@ -1,0 +1,113 @@
+<html>
+	<body class="page column">
+		<div class="content column" style="gap: 12px;">
+			<h1>Will you be my Valentine Koala?</h1>
+			<div class="row actions">
+				<button id="yes-button" onclick="alert('Yay!!🥳')">Yes</button>
+				<button id="no-button" onclick="alert('Hello')">No</button>
+			</div>
+		</div>
+	</body>
+	<style>
+		body {
+			width: 100%;
+			height: 100%;
+			background-image: url('./resources/valentines-background.jpg');
+			background-size: cover;
+			background-repeat: no-repeat;
+			overflow: hidden;
+		}
+
+		button {
+			outline: unset;
+			border: unset;
+			border-radius: 8px;
+			padding: 4px;
+			min-width: 80px;
+			font-size: 16px;
+			font-weight: 700;
+		}
+
+		.column {
+			display: flex;
+			flex-direction: column;
+		}
+
+		.row {
+			display: flex;
+			flex-direction: row;
+		}
+
+		.page {
+			justify-content: center;
+			align-items: center;
+		}
+
+		.content {
+			border-radius: 12px;
+			background-color: #f74a4a;
+			padding: 24px;
+			border: double 8px maroon;
+		}
+
+		.actions {
+			align-self: center;
+			gap: 8px;
+		}
+
+		.running-away {
+			position: absolute;
+			box-shadow: 0 0 4px black;
+		}
+
+		body:has(.running-away) {
+			cursor: url('./resources/running-man.svg'), auto;
+
+			#yes-button {
+				font-size: 40px;
+				min-width: 140px;
+				padding: 12px;
+				border-width: 2px;
+			}
+		}
+
+		#yes-button {
+			background-color: #b10101;
+			border: solid 1px maroon;
+			color: white;
+		}
+
+		#yes-button:hover {
+			cursor: url('./resources/heart.svg'), auto;
+		}
+		
+		#no-button {
+			background-color: black;
+			color: white;
+		}
+	</style>
+	<script>
+		function random(max) {
+			return Math.random() * max;
+		}
+
+		function runAway() {
+			this.style.top = random(document.body.clientHeight - this.clientHeight);
+			this.style.left = random(document.body.clientWidth - this.clientWidth);
+		}
+
+		function firstHover() {
+			this.classList.add('running-away');
+			this.removeEventListener('mouseover', firstHover);
+			runAway.call(this);
+			this.addEventListener('mouseover', runAway);
+		}
+
+		function attachListeners() {
+			const noButton = document.getElementById("no-button");
+			if (noButton) noButton.addEventListener('mouseover', firstHover);
+		}
+
+		attachListeners()
+	</script>
+</html>
