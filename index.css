@@ -1,11 +1,61 @@
 body {
+  margin: unset;
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-image: url("./assets/background-image.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 .page {
-  padding: 16px 0;
+  padding: 32px;
   max-width: 60%;
   width: 100%;
+  background-color: white;
+}
+
+.profile-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-image > img {
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+}
+
+.page > section > h2 {
+  text-align: center;
+  font-family: monospace;
+  font-size: 24px;
+  margin: 16px 0;
+}
+
+.page > section > div {
+  padding: 4px 16px;
+  font-family: "Courier New", Courier, monospace;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-details {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.contact-details > div {
+  width: 280px;
 }
